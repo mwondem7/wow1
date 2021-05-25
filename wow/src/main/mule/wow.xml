@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd"></mule>
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="50586713-e09c-4368-81a3-e444d6eb2ef5" >
+		<http:listener-connection host="0.0.0.0" port="8083" />
+	</http:listener-config>
+	<flow name="wowFlow" doc:id="c6571b61-65eb-49b1-bf52-e49bf9592a35" >
+		<http:listener doc:name="Listener" doc:id="904d4293-2e16-4bdd-a525-3b869199fdcc" config-ref="HTTP_Listener_config" path="/wow"/>
+		<logger level="INFO" doc:name="Logger" doc:id="b01fbfb5-adc7-4040-8506-5aac6731d7de" message="logger 1"/>
+	</flow>
+</mule>
